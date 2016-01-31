@@ -1,3 +1,7 @@
 == README
 
+<<<<<<< HEAD
 Linkki Heroku-instanssiin: https://infinite-river-68854.herokuapp.com/breweries
+=======
+Linkki Heroku-instanssi: https://infinite-river-68854.herokuapp.com/breweries
+>>>>>>> origin/master
