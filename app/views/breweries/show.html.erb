@@ -10,11 +10,11 @@
 
 <p> Number of beers: <%= @brewery.beers.count %> </p>
 
-<p>
+<ul>
  <% @brewery.beers.each do |beer| %>
-   <ul></ul><%= link_to beer.name, beer %></ul>
+   <li><%= link_to beer.name, beer %></li>
  <% end %>
-</p>
+</ul>
 
 <p>
   <% if @brewery.ratings.empty? %>

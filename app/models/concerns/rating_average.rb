@@ -1,9 +1,8 @@
 module RatingAverage
   extend ActiveSupport::Concern
   def average_rating
-    taulukko = self.ratings.to_a
-    taulukko.map! {|a| a.score}
-    summa = taulukko.inject {|summa, rating| summa + rating}
-    keskiarvo = summa.to_f / taulukko.size
+    return 0 if self.ratings.empty?
+    average = ratings.inject(0.0){ |sum, r| sum+r.score } / ratings.count
+    average.round(2)
   end
 end

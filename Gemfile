@@ -7,6 +7,8 @@ gem 'rails', '4.2.5'
 
 ruby '2.3.0'
 
+gem 'bcrypt', '~> 3.1.7'
+
 group :development, :test do
   gem 'sqlite3'
 end
