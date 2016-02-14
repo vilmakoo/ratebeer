@@ -1,12 +1,14 @@
 class Beer < ActiveRecord::Base
 	include RatingAverage
+
+	validates :name, presence: true
+	validates :style, presence: true
+
 	belongs_to :brewery
 	has_many :ratings, dependent: :destroy
 	has_many :raters, -> { uniq }, through: :ratings, source: :user
-	validates :name, length: { minimum: 1 }
 
 	def to_s
-		merkkijono = self.name + ", " + self.brewery.name
+		"#{name} #{brewery.name}"
 	end
-
 end

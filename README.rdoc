@@ -1,3 +1,0 @@
-== README
-
-Linkki Heroku-instanssiin: https://infinite-river-68854.herokuapp.com/breweries
