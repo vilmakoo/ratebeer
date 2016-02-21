@@ -88,6 +88,10 @@
         null,
         null
       ],
+      "/Users/vilma/Documents/Koulujutut/wadror/ratebeer/app/models/style.rb": [
+        1,
+        null
+      ],
       "/Users/vilma/Documents/Koulujutut/wadror/ratebeer/app/models/user.rb": [
         1,
         1,
@@ -301,6 +305,8 @@
         null,
         null,
         1,
+        0,
+        0,
         null,
         null,
         null,
@@ -615,10 +621,15 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/Users/vilma/Documents/Koulujutut/wadror/ratebeer/app/controllers/memberships_controller.rb": [
-        0,
         0,
         0,
         0,
@@ -777,6 +788,6 @@
         0
       ]
     },
-    "timestamp": 1455882575
+    "timestamp": 1455967286
   }
 }
