@@ -1,23 +1,27 @@
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h2>
   <%= @style.name %>
-</p>
+</h2>
 
-<p>
-  <strong>Describtion:</strong>
+<quote>
   <%= @style.describtion %>
-</p>
+</quote>
 
-<p>
-  <strong>beers</strong>
-</p>
+<h3>beers</h3>
+
 <ul>
   <% @style.beers.each do |beer| %>
-      <li> <%= link_to beer.name, beer %> by <%=link_to beer.brewery.name, beer.brewery %> </li>
+      <li>
+        <%= link_to beer.name, beer %> by
+        <em>
+          <%= link_to beer.brewery.name, beer.brewery %>
+        </em>
+      </li>
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_style_path(@style) %> |
-<%= link_to 'Back', styles_path %>
+<% if current_user %>
+    <%= edit_and_destroy_buttons(@style) %>
+<% end %>

@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h1><%= @user.username %></h1>
-</p>
+
+<h1><%= @user.username %></h1>
+<% if !@user.active  && current_user && current_user.admin %>
+    <span class="label label-info">frozen</span>
+<% end %>
 
 <p>
   <% if @user.ratings.empty? %>
       Hasn't made any ratings yet!
   <% else %>
-      Has made <%= pluralize(@user.ratings.count, 'rating')%>, average rating is <%= @user.average_rating %>
+      Has made <%= pluralize(@user.ratings.count, 'rating') %>, average rating is <%= @user.average_rating %>
   <% end %>
 </p>
 
@@ -24,22 +26,32 @@
 <% end %>
 
 <p>
-  <h3>ratings:</h3>
+<h3>ratings:</h3>
 
-<ul>
+<ul class="list-group">
   <% @user.ratings.each do |rating| %>
-      <li>
+      <li class="list-group-item">
         <%= rating %>
         <% if @user == current_user %>
-            <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'delete', rating, method: :delete, data: {confirm: 'Are you sure?'} %>
         <% end %>
       </li>
   <% end %>
 </ul>
 </p>
 
-<%if @user == current_user %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>
-<%= link_to 'Back', users_path %>
+<div class="btn-toolbar" role="toolbar" aria-label="...">
+  <% if @user == current_user %>
+      <div class="btn-group" role="group" aria-label="..."><%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %></div>
+      <div class="btn-group" role="group" aria-label="..."><%= link_to 'Destroy', @user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %></div>
+  <% end %>
+  <div class="btn-group" role="group" aria-label="..."><%= link_to 'Back', users_path, class: 'btn btn-default' %></div>
+
+  <% if current_user && current_user.admin %>
+      <% if @user.active %>
+          <%= link_to "freeze account", toggle_activity_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+      <% else %>
+          <%= link_to "reactivate account", toggle_activity_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+      <% end %>
+  <% end %>
+</div>
